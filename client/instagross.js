@@ -48,7 +48,7 @@ Template.myMap.created = function() {
 				for (var i = 0; i < json.length; i++) {
 					$.ajax({
 						url: 'https://graph.facebook.com/search?q=' + json[i].aka_name + '&type=place&center=' + json[i].latitude + ',' + json[i].longitude + '&distance=100&access_token=253560938148674|tKIJElzYjmFRbNRdgG4DVyO8Iuk',
-						dataType: 'json',
+						dataType: 'jsonp',
 						success: getPhotos,
 						statusCode: {
 							500: function() {
@@ -65,7 +65,7 @@ Template.myMap.created = function() {
 
 		var getFailures = function () {
 			$.ajax({
-				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=32',
+				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=5',
 				datatype: 'json',
 				success: matchToFB,
 				statusCode: {
@@ -80,9 +80,9 @@ Template.myMap.created = function() {
 		//ajax call to Instagram API
 		var getPhotos = function (data) {
 			$.ajax({
-				url: 'https://api.instagram.com/v1/media/search?callback=?',
+				url: 'https://api.instagram.com/v1/locations/search?' + data.id + '&access_token=d2b56f48d91a40a1b21b6e741ad4e50c&callback=?',
 				dataType: 'json',
-				data: {'order': '-createdAt', facebook_places_id: data.id, client_id: INSTAID, access_token:ACCESSTOKEN},
+				//data: {facebook_places_id: data.id, client_id: INSTAID, access_token:ACCESSTOKEN},
 				success: placeInstaMarkers,
 				statusCode: {
 					500: function() {
