@@ -7,7 +7,7 @@ Template.myMap.created = function() {
 		var mapa = L.mapbox.map('map', 'robomex.he6o03jb');
 		
 		//Instagram markers are placed for every photo, using the lat & lng info from the photo
-		function placeInstaMarkers(data, map) {
+		function placeInstaMarkers(data) {
 			for (var i = 0; i < data.length; i++) {
 				var latLng = L.latLng(data[i].location.latitude, data[i].location.longitude);
 				var instaMarker = L.marker(latLng).addTo(mapa).bindPopup(popupContent).openPopup();
@@ -21,12 +21,12 @@ Template.myMap.created = function() {
 
 		//process json data if ajax call successful
 		function jsonLoad (json) {
-			if (json.meta.code == 200) {
+			//if (json.meta.code == 200) {
 				var show = json.data;
 				placeInstaMarkers(show, map);
-			} else {
-				alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
-			};
+			//} else {
+			//	alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
+			//};
 		};
 
 		//Get geolocation
@@ -41,7 +41,6 @@ Template.myMap.created = function() {
 			var latLng = L.latLng(41.9, -87.7);
 			getFailures();
 		};
-
 
 
 		function matchToFB (json) {
@@ -66,7 +65,7 @@ Template.myMap.created = function() {
 
 		var getFailures = function () {
 			$.ajax({
-				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=10',
+				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=32',
 				datatype: 'json',
 				success: matchToFB,
 				statusCode: {
@@ -77,22 +76,14 @@ Template.myMap.created = function() {
 			});
 		};
 
-		function returnMatched (fbJson) {
-			//if (json.meta.code == 200) {
-				return fbJson;
-			//} else {
-			//	alert("Instagram API limit exceeded - you need to sign in to instagrimy for this shit to work");
-			//};
-		};
-
 
 		//ajax call to Instagram API
 		var getPhotos = function (data) {
 			$.ajax({
-				url: 'https://api.instagram.com/v1/media/search?',
-				dataType: 'jsonp',
+				url: 'https://api.instagram.com/v1/media/search?callback=?',
+				dataType: 'json',
 				data: {'order': '-createdAt', facebook_places_id: data.id, client_id: INSTAID, access_token:ACCESSTOKEN},
-				success: jsonLoad,
+				success: placeInstaMarkers,
 				statusCode: {
 					500: function() {
 						alert('Sorry, yo, service is temporarily down.');
