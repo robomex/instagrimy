@@ -39,34 +39,34 @@ Template.myMap.created = function() {
 		//user did not enable geolcation, defaulted to Chicago
 		function errorFunction(json) {
 			var latLng = L.latLng(41.9, -87.7);
-			getPhotos(returnMatched(json));
+			getFailures();
 		};
 
 
 
 		function matchToFB (json) {
-			if (json.meta.code == 200) {
+			//if (json.meta.code == 200) {
 				for (var i = 0; i < json.length; i++) {
 					$.ajax({
-						url: 'https://graph.facebook.com/search?q=' + json[i].aka_name.subString(0,2) + '&type=place&center=' + json[i].latitude + ',' + json[i].longitude + '&distance=100&access_token=253560938148674|tKIJElzYjmFRbNRdgG4DVyO8Iuk?callback=?',
+						url: 'https://graph.facebook.com/search?q=' + json[i].aka_name + '&type=place&center=' + json[i].latitude + ',' + json[i].longitude + '&distance=100&access_token=253560938148674|tKIJElzYjmFRbNRdgG4DVyO8Iuk',
 						dataType: 'json',
-						success: errorFunction,
+						success: getPhotos,
 						statusCode: {
 							500: function() {
 								alert('Sorry, yo, service is down.');
 							}
 						}
 					});
-				};
-			} else {
-				alert("Something's broke, yo.");
+				//};
+			//} else {
+			//	alert("Something's broke, yo.");
 			};
 		};
 
 
 		var getFailures = function () {
 			$.ajax({
-				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=100?callback=?',
+				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=10',
 				datatype: 'json',
 				success: matchToFB,
 				statusCode: {
@@ -89,8 +89,8 @@ Template.myMap.created = function() {
 		//ajax call to Instagram API
 		var getPhotos = function (data) {
 			$.ajax({
-				url: 'https://api.instagram.com/v1/media/search?callback=?',
-				dataType: 'json',
+				url: 'https://api.instagram.com/v1/media/search?',
+				dataType: 'jsonp',
 				data: {'order': '-createdAt', facebook_places_id: data.id, client_id: INSTAID, access_token:ACCESSTOKEN},
 				success: jsonLoad,
 				statusCode: {
