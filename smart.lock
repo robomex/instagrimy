@@ -1,0 +1,15 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "accounts-instagram-6": {}
+    },
+    "packages": {
+      "accounts-instagram-6": {
+        "git": "https://github.com/khamoud/meteor-accounts-instagram.git",
+        "tag": "v0.0.7",
+        "commit": "56f4054a9b493d75f6dcd0e2a9fcf7a3389914f2"
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+body { 
+	margin: 0; 
+	padding: 0; 
+}
+
+#map { 
+	position:absolute; 
+	margin: 50px;
+	top: 0; 
+	bottom: 0; 
+	width: 100%; 
+}
+
+.popupPhoto {
+	height: 250px;
+	width: 250px;
+}
+
+.userInfo {
+	padding-top: 9px;
+}
+
+.profilePicture {
+	height: 30px;
+	width: 30px;
+}
+
+.popupText {
+	position: relative;
+	text-shadow: 0 -1px 0 #bbb;
+	color: #333;
+	font-family: Helvetica Neue, Helvetica, arial;
+	font-size: 14px;
+	line-height: 25px;
+	padding: 4px 45px 4px 15px;
+	font-weight: bold;
+}
+
+.caption {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 2%;
+	width: 100%;
+	z-index: 1;
+	margin-top: 15%;
+	padding: 10px;
+}
+
+.caption a {
+	display: inline;
+	width: 90%;
+}
+
+.caption a span {
+	position: relative;
+	text-shadow: 0 -1px 0 #bbb;
+	color: #eee;
+	font-family: Helvetice Neue, Helvetice, arial;
+	font-size: 18px;
+	line-height: 20px;
+	font-weight: bold;
+	background: none;
+}
