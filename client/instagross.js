@@ -18,6 +18,14 @@ Template.myMap.created = function() {
 			};
 		};
 
+		function fbPassthrough (json) {
+				var pass = json.data;
+				getPhotos(pass);
+			//} else {
+			//	alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
+			//};
+		};
+
 		//Get geolocation
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(errorFunction);
@@ -37,8 +45,8 @@ Template.myMap.created = function() {
 				for (var i = 0; i < json.length; i++) {
 					$.ajax({
 						url: 'https://graph.facebook.com/search?q=' + json[i].aka_name + '&type=place&center=' + json[i].latitude + ',' + json[i].longitude + '&distance=100&access_token=253560938148674|tKIJElzYjmFRbNRdgG4DVyO8Iuk',
-						dataType: 'jsonp',
-						success: getPhotos,
+						dataType: 'json',
+						success: fbPassthrough,
 						statusCode: {
 							500: function() {
 								alert('Sorry, yo, service is down.');
@@ -56,7 +64,7 @@ Template.myMap.created = function() {
 			$.ajax({
 				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=5',
 				datatype: 'json',
-				success: getPhotos,
+				success: matchToFB,
 				statusCode: {
 					500: function() {
 						alert('Sorry, yo, service is temporarily down.');
@@ -72,7 +80,7 @@ Template.myMap.created = function() {
 				$.ajax({
 					url: 'https://api.instagram.com/v1/media/search?callback=?',
 					dataType: 'json',
-					data: {lat: data[i].latitude, lng: data[i].longitude, distance: 50, client_id: INSTAID, access_token:ACCESSTOKEN},
+					data: {lat: data[i].location.latitude, lng: data[i].location.longitude, distance: 50, client_id: INSTAID, access_token:ACCESSTOKEN},
 					success: jsonLoad,
 					statusCode: {
 						500: function() {
@@ -92,7 +100,7 @@ Template.myMap.created = function() {
 				+'"/><br/>'+ '<div class="userInfo">'+ '<a href="http://instagram.com/'+ data[i].user.username +
 				'" target="_blank">' + '<img class="profilePicture" src="'+ data[i].user.profile_picture +'"/>'
 				+ '<span class="popupText">@'+ data[i].user.username + '</span>'+ '</a>' +
-				'<p class="caption">'+ data[i].caption + '</p>'+ '</div>';
+				'<p class="popupText">'+ data[i].caption.text + '</p>' + '<p class="popupText">taken @ ' + data[i].location.name + '</p>' + '</div>';
 			};
 		};		
 
