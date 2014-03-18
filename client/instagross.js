@@ -20,7 +20,7 @@ Template.myMap.created = function() {
 
 		function fbPassthrough (json) {
 				var pass = json.data;
-				getPhotos(pass);
+				getLocations(pass);
 			//} else {
 			//	alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
 			//};
@@ -75,13 +75,13 @@ Template.myMap.created = function() {
 
 
 		//ajax call to Instagram API
-		var getPhotos = function (data) {
+		var getLocations = function (data) {
 			for (var i = 0; i < data.length; i++) {
 				$.ajax({
-					url: 'https://api.instagram.com/v1/media/search?callback=?',
+					url: 'https://api.instagram.com/v1/locations/search?callback=?',
 					dataType: 'json',
-					data: {lat: data[i].location.latitude, lng: data[i].location.longitude, distance: 50, client_id: INSTAID, access_token:ACCESSTOKEN},
-					success: jsonLoad,
+					data: {facebook_places_id: data[i].id, client_id: INSTAID, access_token:ACCESSTOKEN},
+					success: passInstaLocations,
 					statusCode: {
 						500: function() {
 							alert('Sorry, yo, service is temporarily down.');
@@ -89,6 +89,32 @@ Template.myMap.created = function() {
 					}
 				});
 			};
+		};
+
+		function passInstaLocations (json) {
+				if (json.data != null) {
+					var pass = json.data;
+					getPhotos(pass);
+				};
+			//} else {
+			//	alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
+			//};
+		};
+
+		var getPhotos = function (data) {
+			//for (var i = 0; i < data.length; i++) {
+				$.ajax({
+					url: 'https://api.instagram.com/v1/locations/' + data.id + '/media/recent?callback=?',
+					dataType: 'json',
+					data: {client_id: INSTAID, access_token:ACCESSTOKEN},
+					success: jsonLoad,
+					statusCode: {
+						500: function() {
+							alert('Sorry, yo!!, service is temporarily down.');
+						}
+					}
+				});
+			//};
 		};
 
 		//Instagram markers are placed for every photo, using the lat & lng info from the photo
