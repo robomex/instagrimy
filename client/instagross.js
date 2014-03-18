@@ -92,19 +92,19 @@ Template.myMap.created = function() {
 		};
 
 		function passInstaLocations (json) {
-				if (json.data != null) {
-					var pass = json.data;
-					getPhotos(pass);
+				if (json.data.length != 0) {
+					var locpass = json.data.id;
+					getPhotos(locpass);
 				};
 			//} else {
 			//	alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
 			//};
 		};
 
-		var getPhotos = function (data) {
+		var getPhotos = function (datas) {
 			//for (var i = 0; i < data.length; i++) {
 				$.ajax({
-					url: 'https://api.instagram.com/v1/locations/' + data.id + '/media/recent?callback=?',
+					url: 'https://api.instagram.com/v1/locations/' + datas + '/media/recent?callback=?',
 					dataType: 'json',
 					data: {client_id: INSTAID, access_token:ACCESSTOKEN},
 					success: jsonLoad,
