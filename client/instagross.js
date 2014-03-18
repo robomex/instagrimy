@@ -6,26 +6,6 @@ Template.myMap.created = function() {
 	Template.myMap.rendered = _.once(function() {
 		var mapa = L.mapbox.map('map', 'robomex.he6o03jb');
 		
-
-
-		//process json data if ajax call successful
-		function jsonLoad (json) {
-			if (json.meta.code == 200) {
-				var show = json.data;
-				placeInstaMarkers(show);
-			} else {
-				alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
-			};
-		};
-
-		function fbPassthrough (json) {
-				var pass = json.data;
-				getLocations(pass);
-			//} else {
-			//	alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
-			//};
-		};
-
 		//Get geolocation
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(errorFunction);
@@ -39,6 +19,18 @@ Template.myMap.created = function() {
 			getFailures();
 		};
 
+		var getFailures = function () {
+			$.ajax({
+				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=5',
+				datatype: 'json',
+				success: matchToFB,
+				statusCode: {
+					500: function() {
+						alert('Sorry, yo, service is temporarily down.');
+					}
+				}
+			});
+		};
 
 		function matchToFB (json) {
 			//if (json.meta.code == 200) {
@@ -59,20 +51,13 @@ Template.myMap.created = function() {
 			};
 		};
 
-
-		var getFailures = function () {
-			$.ajax({
-				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=5',
-				datatype: 'json',
-				success: matchToFB,
-				statusCode: {
-					500: function() {
-						alert('Sorry, yo, service is temporarily down.');
-					}
-				}
-			});
+		function fbPassthrough (json) {
+				var pass = json.data;
+				getLocations(pass);
+			//} else {
+			//	alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
+			//};
 		};
-
 
 		//ajax call to Instagram API
 		var getLocations = function (data) {
@@ -99,6 +84,16 @@ Template.myMap.created = function() {
 			//} else {
 			//	alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
 			//};
+		};
+
+		//process json data if ajax call successful
+		function jsonLoad (json) {
+			if (json.meta.code == 200) {
+				var show = json.data;
+				placeInstaMarkers(show);
+			} else {
+				alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
+			};
 		};
 
 		var getPhotos = function (datas) {
