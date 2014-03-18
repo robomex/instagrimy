@@ -21,7 +21,7 @@ Template.myMap.created = function() {
 
 		var getFailures = function () {
 			$.ajax({
-				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=5',
+				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=15',
 				datatype: 'json',
 				success: matchToFB,
 				statusCode: {
@@ -78,12 +78,28 @@ Template.myMap.created = function() {
 
 		function passInstaLocations (json) {
 				if (json.data.length != 0) {
-					var locpass = json.data.id;
+					var locpass = json.data;
 					getPhotos(locpass);
 				};
 			//} else {
 			//	alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
 			//};
+		};
+
+		var getPhotos = function (data) {
+			for (var i = 0; i < data.length; i++) {
+				$.ajax({
+					url: 'https://api.instagram.com/v1/locations/' + data[i].id + '/media/recent?callback=?',
+					dataType: 'json',
+					data: {client_id: INSTAID, access_token:ACCESSTOKEN},
+					success: jsonLoad,
+					statusCode: {
+						500: function() {
+							alert('Sorry, yo!!, service is temporarily down.');
+						}
+					}
+				});
+			};
 		};
 
 		//process json data if ajax call successful
@@ -94,22 +110,6 @@ Template.myMap.created = function() {
 			} else {
 				alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
 			};
-		};
-
-		var getPhotos = function (datas) {
-			//for (var i = 0; i < data.length; i++) {
-				$.ajax({
-					url: 'https://api.instagram.com/v1/locations/' + datas + '/media/recent?callback=?',
-					dataType: 'json',
-					data: {client_id: INSTAID, access_token:ACCESSTOKEN},
-					success: jsonLoad,
-					statusCode: {
-						500: function() {
-							alert('Sorry, yo!!, service is temporarily down.');
-						}
-					}
-				});
-			//};
 		};
 
 		//Instagram markers are placed for every photo, using the lat & lng info from the photo
