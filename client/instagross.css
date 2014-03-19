@@ -4,16 +4,22 @@ body {
 }
 
 #map { 
+
+
 	position:absolute; 
-	margin: 50px;
+	margin: 69px;
 	top: 0; 
 	bottom: 0; 
-	width: 100%; 
+	right: 0;
+	left: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%; 
 }
 
 .popupPhoto {
-	height: 250px;
-	width: 250px;
+	height: 150px;
+	width: 150px;
 }
 
 .userInfo {

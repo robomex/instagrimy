@@ -4,7 +4,9 @@ var ACCESSTOKEN = "";
 //hack needed until 1.0 - at that point won't need the create/render hack, nor the #constant
 Template.myMap.created = function() {
 	Template.myMap.rendered = _.once(function() {
-		var mapa = L.mapbox.map('map', 'robomex.he6o03jb');
+		var mapa = L.mapbox.map('map', 'robomex.he6o03jb'
+			//,{detectRetina: true}
+			);
 		
 		//Get geolocation
 		if (navigator.geolocation) {
