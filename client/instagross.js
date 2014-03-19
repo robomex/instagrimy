@@ -117,7 +117,7 @@ Template.myMap.created = function() {
 		//Instagram markers are placed for every photo, using the lat & lng info from the photo
 		function placeInstaMarkers(data) {
 			for (var i = 0; i < data.length; i++) {
-				var latLng = L.latLng(data[i].location.latitude, data[i].location.longitude);
+				var latLng = L.latLng(data[i].location.latitude+.01*i, data[i].location.longitude+.01*i);
 				var instaMarker = L.marker(latLng).addTo(mapa).bindPopup(popupContent).openPopup();
 				var popupContent = '<img class="popupPhoto" src="'+ data[i].images.standard_resolution.url 
 				+'"/><br/>'+ '<div class="userInfo">'+ '<a href="http://instagram.com/'+ data[i].user.username +
