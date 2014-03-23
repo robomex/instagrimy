@@ -14,7 +14,7 @@ Template.myMap.created = function() {
 
 		var getFailures = function () {
 			$.ajax({
-				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=3',
+				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=10',
 				datatype: 'json',
 				success: matchToFB,
 				statusCode: {
@@ -84,7 +84,7 @@ Template.myMap.created = function() {
 				$.ajax({
 					url: 'https://api.instagram.com/v1/locations/' + data[i].id + '/media/recent?callback=?',
 					dataType: 'json',
-					data: {client_id: INSTAID, access_token:ACCESSTOKEN},
+					data: {client_id: INSTAID, access_token:ACCESSTOKEN, min_timestamp: 1393632000},
 					success: jsonLoad,
 					statusCode: {
 						500: function() {
@@ -109,7 +109,7 @@ Template.myMap.created = function() {
 		function placeInstaMarkers(data) {
 			for (var i = 0; i < data.length; i++) {
 				var latLng = L.latLng(data[i].location.latitude+.00003*i*Math.cos(i), data[i].location.longitude-.00003*i*Math.sin(i));
-				var instaMarker = L.marker(latLng).addTo(mapa).bindPopup(popupContent).openPopup();
+				var instaMarker = L.marker(latLng).addTo(mapa).bindPopup(popupContent);
 				var popupContent = '<div>'+ '<a href="http://instagram.com/'+ data[i].user.username +
 					'" target="_blank">' + '<img class="profilePicture" src="'+ data[i].user.profile_picture +'"/>'
 					+ '<span class="popupText user">'+ data[i].user.username + '</span>'+ '</a><br/>' + 
