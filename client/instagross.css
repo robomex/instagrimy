@@ -42,7 +42,8 @@ body {
 	display: inline;
 	position: relative;
 	color: #aaa;
-	font-size: 9px;
+	font-size: 12px;
+	top: -17px;
 }
 
 .user {
@@ -51,6 +52,20 @@ body {
 
 .location {
 	color: #408BDB;
-	top: -13px;
+	top: -14px;
 }
 
+.comment {
+	position: relative;
+	background-color: #ccc;
+	border-radius: 3px;
+	color: #777;
+	padding: 0px 4px;
+	float: right;
+	font-size: 12px;
+	top: -19px;
+}
+
+.comment:hover {
+	background-color: #aaa;
+}

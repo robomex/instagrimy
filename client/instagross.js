@@ -124,7 +124,9 @@ Template.myMap.created = function() {
 					+ '<span class="popupText user">'+ data[i].user.username + '</span>'+ '</a><br/>' + 
 					'<span class="popupText location"><i class="fa fa-map-marker"></i> ' + data[i].location.name + '</span>' + 
 					'<img class="popupPhoto" src="'+ data[i].images.standard_resolution.url 
-					+'"/><br/>'+ '<span class="caption">'+ data[i].caption.text + '</span>' + '</div>';
+					+'"/><br/>'+ '<span class="caption"><i class="fa fa-comment"></i> <span class="user">' + data[i].user.username + '</span> '
+					+ data[i].caption.text + '</span></br><a href="' + data[i].link + '" target="_blank">' 
+					+ '<span class="comment"><i class="fa fa-comment"></i> Comment</span></a></div>';
 			};
 		};		
 
