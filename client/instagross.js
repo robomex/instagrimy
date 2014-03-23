@@ -16,8 +16,7 @@ Template.myMap.created = function() {
 		}
 
 		//user did not enable geolcation, defaulted to Chicago
-		function errorFunction(json) {
-			var latLng = L.latLng(41.9, -87.7);
+		function errorFunction() {
 			getFailures();
 		};
 
