@@ -119,11 +119,12 @@ Template.myMap.created = function() {
 			for (var i = 0; i < data.length; i++) {
 				var latLng = L.latLng(data[i].location.latitude+.00003*i*Math.cos(i), data[i].location.longitude-.00003*i*Math.sin(i));
 				var instaMarker = L.marker(latLng).addTo(mapa).bindPopup(popupContent).openPopup();
-				var popupContent = '<img class="popupPhoto" src="'+ data[i].images.standard_resolution.url 
-				+'"/><br/>'+ '<div class="userInfo">'+ '<a href="http://instagram.com/'+ data[i].user.username +
-				'" target="_blank">' + '<img class="profilePicture" src="'+ data[i].user.profile_picture +'"/>'
-				+ '<span class="popupText">@'+ data[i].user.username + '</span>'+ '</a>' +
-				'<p class="popupText">'+ data[i].caption.text + '</p>' + '<p class="popupText">taken @ ' + data[i].location.name + '</p>' + '</div>';
+				var popupContent = '<div>'+ '<a href="http://instagram.com/'+ data[i].user.username +
+					'" target="_blank">' + '<img class="profilePicture" src="'+ data[i].user.profile_picture +'"/>'
+					+ '<span class="popupText user">'+ data[i].user.username + '</span>'+ '</a><br/>' + 
+					'<span class="popupText location"><i class="fa fa-map-marker"></i> ' + data[i].location.name + '</span>' + 
+					'<img class="popupPhoto" src="'+ data[i].images.standard_resolution.url 
+					+'"/><br/>'+ '<span class="caption">'+ data[i].caption.text + '</span>' + '</div>';
 			};
 		};		
 
