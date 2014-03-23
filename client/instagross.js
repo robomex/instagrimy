@@ -8,15 +8,7 @@ Template.myMap.created = function() {
 			//,{detectRetina: true}
 			);
 		
-		//Get geolocation
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(errorFunction);
-		} else {
-			alert('Use a browser that supports the Geolocation API');
-		}
-
-		//user did not enable geolcation, defaulted to Chicago
-		function errorFunction() {
+		window.onload = function() {
 			getFailures();
 		};
 
