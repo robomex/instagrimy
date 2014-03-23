@@ -109,7 +109,6 @@ Template.myMap.created = function() {
 		function placeInstaMarkers(data) {
 			for (var i = 0; i < data.length; i++) {
 				var latLng = L.latLng(data[i].location.latitude+.00003*i*Math.cos(i), data[i].location.longitude-.00003*i*Math.sin(i));
-				var instaMarker = L.marker(latLng).addTo(mapa).bindPopup(popupContent);
 				var popupContent = '<div>'+ '<a href="http://instagram.com/'+ data[i].user.username +
 					'" target="_blank">' + '<img class="profilePicture" src="'+ data[i].user.profile_picture +'"/>'
 					+ '<span class="popupText user">'+ data[i].user.username + '</span>'+ '</a><br/>' + 
@@ -118,6 +117,7 @@ Template.myMap.created = function() {
 					+'"/><br/>'+ '<span class="caption"><i class="fa fa-comment"></i> <span class="user">' + data[i].user.username + '</span> '
 					+ data[i].caption.text + '</span></br><a href="' + data[i].link + '" target="_blank">' 
 					+ '<span class="comment"><i class="fa fa-comment"></i> Comment</span></a></div>';
+				var instaMarker = L.marker(latLng).addTo(mapa).bindPopup(popupContent);
 			};
 		};		
 
