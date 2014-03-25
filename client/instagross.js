@@ -119,8 +119,9 @@ Template.myMap.created = function() {
 					+ '<span class="comment"><i class="fa fa-comment"></i> Comment</span></a></div>';
 				var instaMarker = L.marker([latLng.lat, latLng.lng]).addTo(mapa).bindPopup(popupContent);
 			};
- 		instaMarker.openPopup();
-
+ 		if (instaMarker != null) {
+ 			instaMarker.openPopup();
+ 		};
 		};
 
 	});
