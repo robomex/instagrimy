@@ -6,34 +6,30 @@ body {
 
 .menu {
 	text-align: center;
-background: -moz-linear-gradient(top,  rgba(99,147,107,1) 0%, rgba(120,177,207,0) 60%, rgba(125,185,232,0) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(99,147,107,1)), color-stop(60%,rgba(120,177,207,0)), color-stop(100%,rgba(125,185,232,0))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(99,147,107,1) 0%,rgba(120,177,207,0) 60%,rgba(125,185,232,0) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(99,147,107,1) 0%,rgba(120,177,207,0) 60%,rgba(125,185,232,0) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(99,147,107,1) 0%,rgba(120,177,207,0) 60%,rgba(125,185,232,0) 100%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(99,147,107,1) 0%,rgba(120,177,207,0) 60%,rgba(125,185,232,0) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63936b', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
-
+	background: url('/wet_snow.png');
+	width: 700px;
+	margin: auto;
 }
 
 .logo {
 	vertical-align: middle;
 	margin: auto;
-	width: 150px;
+	width: 100px;
 }
 
 .name {
 	font-size: 67px;
-	margin: 0 47px 0 0;
 	position: relative;
 	top: 13px;
 	color: #333;
+
 }
 
 .tagline {
 	font-size: 17px;
 	margin-left: 10px;
 	color: #555;
+	vertical-align: middle;
 }
 
 #failed {
@@ -42,7 +38,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63936b', end
 
 #map { 
 	position: absolute; 
-	margin: 69px;
+	margin: 80px;
 	top: 77px; 
 	bottom: 0; 
 	right: 0;
@@ -106,4 +102,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63936b', end
 
 .comment:hover {
 	background-color: #aaa;
+}
+
+.ul {
+	display: block;
+	clear: both;
 }
