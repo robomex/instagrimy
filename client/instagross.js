@@ -6,7 +6,7 @@ Template.myMap.created = function() {
 	Template.myMap.rendered = _.once(function() {
 		var mapa = L.mapbox.map('map', 'robomex.he6o03jb'
 			//,{detectRetina: true}
-			);
+			).setView([41.898, -87.682], 11);
 		
 		window.onload = function() {
 			getFailures();
@@ -117,9 +117,11 @@ Template.myMap.created = function() {
 					+'"/><br/>'+ '<span class="caption"><i class="fa fa-comment"></i> <span class="user">' + data[i].user.username + '</span> '
 					+ data[i].caption.text + '</span></br><a href="' + data[i].link + '" target="_blank">' 
 					+ '<span class="comment"><i class="fa fa-comment"></i> Comment</span></a></div>';
-				var instaMarker = L.marker(latLng).addTo(mapa).bindPopup(popupContent);
+				var instaMarker = L.marker([latLng.lat, latLng.lng]).addTo(mapa).bindPopup(popupContent);
 			};
-		};		
+ 		instaMarker.openPopup();
+
+		};
 
 	});
 };

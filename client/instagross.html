@@ -5,6 +5,7 @@
 	<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -21,13 +22,16 @@
 </head>
 
 <body>
-	<ul class="pull-right" style="margin-left:5%; margin-top:3px; font-size: 18px">
+
+ 	<div class="menu">
+ 		<span class="name">instagrimy</span>
+ 		<img class="logo" src="instagrimy.png"></img>
+		<span class="tagline">pics from places that <span id="failed">failed</span> health inspection</span>
+	</div>
+ 	{{> myMap}}
+ 	<ul class="pull-right" style="margin-left:5%; margin-top:3px; font-size: 18px">
 		{{loginButtons}}
 	</ul>
- 	{{> myMap}}
- 	<p>
- 		the latest pics from places that failed their health inspection
- 	</p>
 </body>
 
 <template name="myMap">
