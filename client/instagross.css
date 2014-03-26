@@ -59,7 +59,8 @@ body {
 .menu {
 	text-align: center;
 	background: url('/wet_snow.png');
-	width: 550px;
+	width: 50%;
+	max-width: 550px;
 	margin: auto;
 	border-radius: 0px 0px 23px 23px;
 	-moz-border-radius: 0px 0px 23px 23px;
@@ -74,7 +75,8 @@ body {
 .logo {
 	vertical-align: middle;
 	margin: auto;
-	width: 77px;
+	width: 17%;
+	max-width: 150px;
 }
 
 .name {
@@ -91,6 +93,17 @@ body {
 	margin-bottom: 5px;
 }
 
+.about {
+	position: relative;
+	top: 5px;
+	font-size: 17px;
+}
+
+.about a {
+	color: #555;
+	text-decoration: none;
+}
+
 #failed {
 	color: red;
 }
@@ -98,15 +111,15 @@ body {
 #map { 
 	position: absolute; 
 	margin: 10px;
-	top: 117px; 
-	bottom: 0; 
+	top: 14%; 
+	bottom: 33px; 
 	right: 0;
 	left: 0;
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
-	max-height: 75%;
-	max-width: 97%;
+	max-height: 85%;
+	max-width: 98%;
 }
 
 .popupPhoto {
@@ -130,6 +143,34 @@ body {
 	padding: 0px 0px 0px 7px;
 	font-weight: bold;
 	top: -8px;
+}
+
+
+@media screen and (max-width: 800px) { 
+	.name {
+		font-size: 23px;
+		top: 3px;
+	}
+
+	.tagline {
+		font-size: 12px;
+	}
+	.about {
+		font-size: 12px;
+	}
+
+	.popupPhoto {
+		height: 140px;
+		width: 140px;
+	}
+
+	.popup {
+		width: 140px;
+	}
+
+	.popupText {
+		
+	}
 }
 
 .caption {
@@ -182,8 +223,11 @@ body {
 }
 
 #footer {
+	z-index: 3;
 	text-align: center;
-	width: 117px;
+	width: 8%;
+	min-width: 69px;
+	max-width: 117px;
 	background: url('/wet_snow.png');
 	margin: auto;
 	border-radius: 23px 23px 0px 0px;
@@ -196,18 +240,18 @@ body {
 	box-shadow: 4px 3px 37px 0px rgba(0,0,0,0.51);
 }
 
-@media (max-width: 767px) {
-	#footer {
-		margin-left: -20px;
-		margin-right: -20px;
-		padding-left: 20px;
-		padding-right: 20px;
-	}
+
+
+#myModal {
+	font-family: Helvetica Neue, Helvetica, arial;
+	font-size: 17px;
+	width: 50%;
+	margin: auto;
+	top: 5%;
+	height: 100%;
+	max-height: 450px;
 }
 
-.about {
-	position: relative;
-	top: 5px;
-	font-size: 17px;
-	color: #555;
+#myModal p {
+	padding: 7px;
 }

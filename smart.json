@@ -1,5 +1,7 @@
 {
   "packages": {
-    "accounts-instagram-6": {}
+    "accounts-instagram-6": {},
+    "bootstrap-modal": {},
+    "bootstrap-3": {}
   }
 }

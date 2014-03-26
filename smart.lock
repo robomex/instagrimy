@@ -2,13 +2,25 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "accounts-instagram-6": {}
+      "accounts-instagram-6": {},
+      "bootstrap-modal": {},
+      "bootstrap-3": {}
     },
     "packages": {
       "accounts-instagram-6": {
         "git": "https://github.com/khamoud/meteor-accounts-instagram.git",
         "tag": "v0.0.7",
         "commit": "56f4054a9b493d75f6dcd0e2a9fcf7a3389914f2"
+      },
+      "bootstrap-modal": {
+        "git": "https://github.com/livingyang/meteor-bootstrap-modal.git",
+        "tag": "v2.2.5",
+        "commit": "8687f21b2ed5d41f038885c3733287b1001b13b5"
+      },
+      "bootstrap-3": {
+        "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
+        "tag": "v3.1.1-1",
+        "commit": "63dd38968828bb8963636df93e9a1c45e2dfe67e"
       }
     }
   }

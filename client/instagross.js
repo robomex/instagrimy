@@ -4,17 +4,17 @@ var ACCESSTOKEN = "";
 //hack needed until 1.0 - at that point won't need the create/render hack, nor the #constant
 Template.myMap.created = function() {
 	Template.myMap.rendered = _.once(function() {
-		//var mapa = L.mapbox.map('map', 'robomex.he6o03jb'
+		var mapa = L.mapbox.map('map', 'robomex.he6o03jb'
 			//,{detectRetina: true}
-		//	).setView([41.898, -87.682], 11);
+			).setView([41.898, -87.682], 11);
 		
-		//window.onload = function() {
-		//	getFailures();
-		//};
+		window.onload = function() {
+			getFailures();
+		};
 
 		var getFailures = function () {
 			$.ajax({
-				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=23',
+				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=25',
 				datatype: 'json',
 				success: matchToFB,
 				statusCode: {
@@ -109,7 +109,7 @@ Template.myMap.created = function() {
 		function placeInstaMarkers(data) {
 			for (var i = 0; i < data.length; i++) {
 				var latLng = L.latLng(data[i].location.latitude+.00003*i*Math.cos(i), data[i].location.longitude-.00003*i*Math.sin(i));
-				var popupContent = '<div>'+ '<a href="http://instagram.com/'+ data[i].user.username +
+				var popupContent = '<div class="popup">'+ '<a href="http://instagram.com/'+ data[i].user.username +
 					'" target="_blank">' + '<img class="profilePicture" src="'+ data[i].user.profile_picture +'"/>'
 					+ '<span class="popupText user">'+ data[i].user.username + '</span>'+ '</a><br/>' + 
 					'<span class="popupText location"><i class="fa fa-map-marker"></i> ' + data[i].location.name + '</span>' + 
@@ -126,7 +126,6 @@ Template.myMap.created = function() {
 
 	});
 };
-
 
 
 

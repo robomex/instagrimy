@@ -35,8 +35,36 @@
 		<div id="push"></div>
 	</div>
 
+	
 	<div id="footer">
-		<span class="about">about</span>
+		<span class="about" data-toggle="modal" data-target="#myModal"><a href="#">about</a></span>
+
+			<div id="myModal" class="modal" tabindex="-1" style="display: none;">
+				<div class="modal-header" class="close" data-dismiss="modal">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title">all about instagrimy</h4>
+				</div>
+				<div class="modal-body" class="close" data-dismiss="modal"  >
+					<p><a href="http://twitter.com/robomex" target="_blank">robomex</a> made this.</p>
+					<p>instagrimy pulls the last 25 restaurants that failed health inspection (roughly a month of failures) and then pulls recent instagram media taken at those failing restaurants.</p>
+					<p>you can check out the health inspection fail reasons <a href="https://data.cityofchicago.org/Health-Human-Services/Food-Inspections/4ijn-s7e5">here</a>.  some of them are super gross.</p>
+					<p>instagrimy's code is all <a href="https://github.com/robomex/instagrimy">here</a>.</p>
+					<p>instagrimy was made using: 
+						<ul>
+							<li><a href="http://meteor.com" target="_blank">meteor</a></li>
+							<li><a href="https://data.cityofchicago.org/" target="_blank">city of chicago data</a></li>
+							<li><a href="http://mapbox.com" target="_blank">mapbox</a></li>
+							<li><a href="http://leafletjs.com" target="_blank">leaflet</a></li>
+							<li><a href="http://heapanalytics.com" target="_blank">heap</a></li>
+							<li><a href="http://analytics.google.com" target="_blank">google analytics</a></li>
+							<li><a href="http://instagram.com" target="_blank">instagram</a></li>
+							<li><a href="http://getbootstrap.com" target="_blank">bootstrap</a></li>
+							<li><a href="http://openstreetmap.org" target="_blank">openstreetmap</a></li>
+							<li><a href="http://facebook.com" target="_blank">facebook</a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
 	</div>
 </body>
 
