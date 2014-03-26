@@ -1,35 +1,94 @@
+/* CSS RESET */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* MY CSS */
+
+html,
 body { 
-	margin: 0; 
-	padding: 0; 
 	font-family: 'Permanent Marker', cursive;
+	height: 100%;
 }
 
 .menu {
 	text-align: center;
 	background: url('/wet_snow.png');
-	width: 700px;
+	width: 550px;
 	margin: auto;
+	border-radius: 0px 0px 23px 23px;
+	-moz-border-radius: 0px 0px 23px 23px;
+	-webkit-border-radius: 0px 0px 23px 23px;
+	border: 2px solid #222;
+	border-top: 0;
+	-webkit-box-shadow: 4px 3px 37px 0px rgba(0,0,0,0.51);
+	-moz-box-shadow: 4px 3px 37px 0px rgba(0,0,0,0.51);
+	box-shadow: 4px 3px 37px 0px rgba(0,0,0,0.51);
 }
 
 .logo {
 	vertical-align: middle;
 	margin: auto;
-	width: 100px;
+	width: 77px;
 }
 
 .name {
-	font-size: 67px;
+	font-size: 47px;
 	position: relative;
-	top: 13px;
+	top: 10px;
 	color: #333;
-
 }
 
 .tagline {
-	font-size: 17px;
-	margin-left: 10px;
+	font-size: 23px;
 	color: #555;
 	vertical-align: middle;
+	margin-bottom: 5px;
 }
 
 #failed {
@@ -38,15 +97,16 @@ body {
 
 #map { 
 	position: absolute; 
-	margin: 80px;
-	top: 77px; 
+	margin: 10px;
+	top: 117px; 
 	bottom: 0; 
 	right: 0;
 	left: 0;
 	margin-left: auto;
 	margin-right: auto;
-	width: 50%; 
 	display: block;
+	max-height: 75%;
+	max-width: 97%;
 }
 
 .popupPhoto {
@@ -107,4 +167,47 @@ body {
 .ul {
 	display: block;
 	clear: both;
+}
+
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -30px;
+}
+
+#push,
+#footer {
+	height: 30px;
+}
+
+#footer {
+	text-align: center;
+	width: 117px;
+	background: url('/wet_snow.png');
+	margin: auto;
+	border-radius: 23px 23px 0px 0px;
+	-moz-border-radius: 23px 23px 0px 0px;
+	-webkit-border-radius: 23px 23px 0px 0px;
+	border: 2px solid #222;
+	border-bottom: 0;
+	-webkit-box-shadow: 4px 3px 37px 0px rgba(0,0,0,0.51);
+	-moz-box-shadow: 4px 3px 37px 0px rgba(0,0,0,0.51);
+	box-shadow: 4px 3px 37px 0px rgba(0,0,0,0.51);
+}
+
+@media (max-width: 767px) {
+	#footer {
+		margin-left: -20px;
+		margin-right: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
+.about {
+	position: relative;
+	top: 5px;
+	font-size: 17px;
+	color: #555;
 }

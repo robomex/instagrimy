@@ -4,13 +4,13 @@ var ACCESSTOKEN = "";
 //hack needed until 1.0 - at that point won't need the create/render hack, nor the #constant
 Template.myMap.created = function() {
 	Template.myMap.rendered = _.once(function() {
-		var mapa = L.mapbox.map('map', 'robomex.he6o03jb'
+		//var mapa = L.mapbox.map('map', 'robomex.he6o03jb'
 			//,{detectRetina: true}
-			).setView([41.898, -87.682], 11);
+		//	).setView([41.898, -87.682], 11);
 		
-		window.onload = function() {
-			getFailures();
-		};
+		//window.onload = function() {
+		//	getFailures();
+		//};
 
 		var getFailures = function () {
 			$.ajax({

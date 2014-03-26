@@ -22,16 +22,22 @@
 </head>
 
 <body>
-
- 	<div class="menu">
- 		<img class="logo" src="instagrimy.png"></img>
- 		<span class="name">instagrimy</span>
-		<p class="tagline">pics from places that <span id="failed">failed</span> health inspection</p>
+	<div id="wrap">
+	 	<div class="menu">
+	 		<img class="logo" src="instagrimy.png"></img>
+	 		<span class="name">instagrimy</span>
+			<p class="tagline">pics from places that <span id="failed">failed</span> health inspection</p>
+		</div>
+	 	{{> myMap}}
+	 	<ul class="pull-right" style="margin-left:5%; margin-top:3px; font-size: 18px">
+			{{loginButtons}}
+		</ul>
+		<div id="push"></div>
 	</div>
- 	{{> myMap}}
- 	<ul class="pull-right" style="margin-left:5%; margin-top:3px; font-size: 18px">
-		{{loginButtons}}
-	</ul>
+
+	<div id="footer">
+		<span class="about">about</span>
+	</div>
 </body>
 
 <template name="myMap">
