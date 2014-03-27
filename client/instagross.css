@@ -133,6 +133,7 @@ body {
 	height: 30px;
 	width: 30px;
 	float: left;
+	display: block;
 }
 
 .popupText {
@@ -175,7 +176,7 @@ body {
 	}
 
 	#map{
-		top: 90px;
+		top: 70px;
 	}
 }
 
