@@ -266,3 +266,11 @@ body {
 #myModal p {
 	padding: 7px;
 }
+
+.instalogin { 
+
+	margin: 1px;
+	display: block;
+	float: right;
+	font-size: 10px;
+}

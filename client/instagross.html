@@ -2,6 +2,7 @@
 	<meta charset=utf-8 />
 	<title>instagrimy</title>
 	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+	<link rel="icon" sizes="16x16 32x32" href="/favicon.ico?v=2">
 	<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -32,43 +33,45 @@
 			<p class="tagline">pics from places that <span id="failed">failed</span> health inspection</p>
 		</div>
 	 	{{> myMap}}
-	 	<ul class="pull-right" style="margin-left:5%; margin-top:3px; font-size: 18px">
-			{{loginButtons}}
-		</ul>
 		<div id="push"></div>
 	</div>
-
+	<ul class="instalogin">
+		{{loginButtons}}
+	</ul>
 	
 	<div id="footer">
 		<span class="about" data-toggle="modal" data-target="#myModal"><a href="#">about</a></span>
+		
 
-			<div id="myModal" class="modal" tabindex="-1" style="display: none;">
-				<div class="modal-header" class="close" data-dismiss="modal">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					<h4 class="modal-title">all about instagrimy</h4>
-				</div>
-				<div class="modal-body" class="close" data-dismiss="modal"  >
-					<p><a href="http://twitter.com/robomex">robomex</a> made this.</p>
-					<p>instagrimy pulls the last 25 restaurants that failed health inspection (roughly a month of failures) and then pulls recent instagram media taken at those failing restaurants.</p>
-					<p>you can check out the health inspection fail reasons <a href="https://data.cityofchicago.org/Health-Human-Services/Food-Inspections/4ijn-s7e5">here</a>.  some of them are super gross.</p>
-					<p>instagrimy's code is all <a href="https://github.com/robomex/instagrimy">here</a>.</p>
-					<p>instagrimy was made using: 
-						<ul>
-							<li><a href="http://meteor.com">meteor</a></li>
-							<li><a href="https://data.cityofchicago.org/">city of chicago data</a></li>
-							<li><a href="http://mapbox.com">mapbox</a></li>
-							<li><a href="http://leafletjs.com">leaflet</a></li>
-							<li><a href="http://heapanalytics.com">heap</a></li>
-							<li><a href="http://analytics.google.com">google analytics</a></li>
-							<li><a href="http://instagram.com">instagram</a></li>
-							<li><a href="http://getbootstrap.com">bootstrap</a></li>
-							<li><a href="http://openstreetmap.org">openstreetmap</a></li>
-							<li><a href="http://facebook.com">facebook</a></li>
-						</ul>
-					</p>
-				</div>
+
+		<div id="myModal" class="modal" tabindex="-1" style="display: none;">
+			<div class="modal-header" class="close" data-dismiss="modal">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">all about instagrimy</h4>
 			</div>
+			<div class="modal-body" class="close" data-dismiss="modal"  >
+				<p><a href="http://twitter.com/robomex">robomex</a> made this.</p>
+				<p>instagrimy pulls the last 50 restaurants that failed health inspection (roughly two weeks of failures) and then pulls any recent instagram media taken at those failing restaurants.</p>
+				<p>you can check out the health inspection fail reasons <a href="https://data.cityofchicago.org/Health-Human-Services/Food-Inspections/4ijn-s7e5">here</a>.  some of them are super gross.</p>
+				<p>instagrimy's code is all <a href="https://github.com/robomex/instagrimy">here</a>.</p>
+				<p>instagrimy was made using: 
+					<ul>
+						<li><a href="http://meteor.com">meteor</a></li>
+						<li><a href="https://data.cityofchicago.org/">city of chicago data</a></li>
+						<li><a href="http://mapbox.com">mapbox</a></li>
+						<li><a href="http://leafletjs.com">leaflet</a></li>
+						<li><a href="http://heapanalytics.com">heap</a></li>
+						<li><a href="http://analytics.google.com">google analytics</a></li>
+						<li><a href="http://instagram.com">instagram</a></li>
+						<li><a href="http://getbootstrap.com">bootstrap</a></li>
+						<li><a href="http://openstreetmap.org">openstreetmap</a></li>
+						<li><a href="http://facebook.com">facebook</a></li>
+					</ul>
+				</p>
+			</div>
+		</div>
 	</div>
+
 </body>
 
 <template name="myMap">

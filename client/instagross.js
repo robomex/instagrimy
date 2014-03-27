@@ -4,9 +4,11 @@ var ACCESSTOKEN = "";
 //hack needed until 1.0 - at that point won't need the create/render hack, nor the #constant
 Template.myMap.created = function() {
 	Template.myMap.rendered = _.once(function() {
-		var mapa = L.mapbox.map('map', 'robomex.he6o03jb'
-			//,{detectRetina: true}
-			).setView([41.898, -87.682], 11);
+		var mapa = L.mapbox.map('map', 'robomex.he6o03jb', {
+			tileLayer: {
+				detectRetina: true
+			}
+			}).setView([41.898, -87.682], 11);
 		
 		var markers = new L.MarkerClusterGroup();
 
@@ -16,7 +18,7 @@ Template.myMap.created = function() {
 
 		var getFailures = function () {
 			$.ajax({
-				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=25',
+				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=50',
 				datatype: 'json',
 				success: matchToFB,
 				statusCode: {
@@ -103,7 +105,7 @@ Template.myMap.created = function() {
 				var show = json.data;
 				placeInstaMarkers(show);
 			} else {
-				alert("Instagram API limit exceeded - yo, please login to instagrimy with Instagram to see more shit");
+				alert("Instagram API limit exceeded - yo, login to instagrimy with Instagram in the lower right corner to see more shit");
 			};
 		};
 
@@ -119,12 +121,15 @@ Template.myMap.created = function() {
 					+'"/><br/>'+ '<div class="caption"><i class="fa fa-comment"></i> <div class="user">' + data[i].user.username + '</div> '
 					+ data[i].caption.text + '</div></br><a href="' + data[i].link + '" target="_blank">' 
 					+ '<span class="comment"><i class="fa fa-comment"></i> Comment</span></a></div>';
-				var instaMarker = L.marker([latLng.lat, latLng.lng]).addTo(mapa).bindPopup(popupContent);
+				var instaMarker = L.marker([latLng.lat, latLng.lng], {
+					icon: L.mapbox.marker.icon({'marker-color': 'ff0000'})
+				}).bindPopup(popupContent);
+				markers.addLayer(instaMarker);
 			};
- 			if (instaMarker != null) {
- 				instaMarker.openPopup();
- 			};
+
 		};
+
+		mapa.addLayer(markers);
 	});
 };
 
