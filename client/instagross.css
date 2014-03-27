@@ -147,7 +147,14 @@ body {
 	display: inline;
 }
 
-
+.caption {
+	display: inline-block;
+	position: relative;
+	color: #aaa;
+	font-size: 12px;
+	top: -17px;
+	line-height: 100%;
+}
 
 @media screen and (max-width: 800px) { 
 	.name {
@@ -178,16 +185,17 @@ body {
 	#map{
 		top: 70px;
 	}
+
+	.location {
+		font-size: 8px;
+		white-space: nowrap;
+	}
+
+	.caption {
+		font-size: 8px;
+	}
 }
 
-.caption {
-	display: inline-block;
-	position: relative;
-	color: #aaa;
-	font-size: 12px;
-	top: -17px;
-	line-height: 100%;
-}
 
 .user {
 	color: #3554B0;
