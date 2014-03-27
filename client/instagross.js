@@ -8,6 +8,8 @@ Template.myMap.created = function() {
 			//,{detectRetina: true}
 			).setView([41.898, -87.682], 11);
 		
+		var markers = new L.MarkerClusterGroup();
+
 		window.onload = function() {
 			getFailures();
 		};
@@ -112,18 +114,17 @@ Template.myMap.created = function() {
 				var popupContent = '<div class="popup">'+ '<a href="http://instagram.com/'+ data[i].user.username +
 					'" target="_blank">' + '<img class="profilePicture" src="'+ data[i].user.profile_picture +'"/>'
 					+ '<div class="popupText user">'+ data[i].user.username + '</div>'+ '</a><br/>' + 
-					'<div class="popupText location"><i class="fa fa-map-marker"></i> ' + data[i].location.name + '</div>' + 
+					'<div class="popupText location"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;' + data[i].location.name + '</div>' + 
 					'<img class="popupPhoto" src="'+ data[i].images.standard_resolution.url 
 					+'"/><br/>'+ '<div class="caption"><i class="fa fa-comment"></i> <div class="user">' + data[i].user.username + '</div> '
 					+ data[i].caption.text + '</div></br><a href="' + data[i].link + '" target="_blank">' 
 					+ '<span class="comment"><i class="fa fa-comment"></i> Comment</span></a></div>';
 				var instaMarker = L.marker([latLng.lat, latLng.lng]).addTo(mapa).bindPopup(popupContent);
 			};
- 		if (instaMarker != null) {
- 			instaMarker.openPopup();
- 		};
+ 			if (instaMarker != null) {
+ 				instaMarker.openPopup();
+ 			};
 		};
-
 	});
 };
 

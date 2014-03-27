@@ -111,7 +111,7 @@ body {
 #map { 
 	position: absolute; 
 	margin: 10px;
-	top: 14%; 
+	top: 133px; 
 	bottom: 33px; 
 	right: 0;
 	left: 0;
@@ -173,14 +173,19 @@ body {
 	.popupText {
 
 	}
+
+	#map{
+		top: 90px;
+	}
 }
 
 .caption {
-	display: inline;
+	display: inline-block;
 	position: relative;
 	color: #aaa;
 	font-size: 12px;
 	top: -17px;
+	line-height: 100%;
 }
 
 .user {
@@ -191,6 +196,9 @@ body {
 .location {
 	color: #408BDB;
 	top: -14px;
+	display: flex;
+	line-height: 100%;
+
 }
 
 .comment {
