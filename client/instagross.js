@@ -18,7 +18,7 @@ Template.myMap.created = function() {
 
 		var getFailures = function () {
 			$.ajax({
-				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=200',
+				url: 'https://data.cityofchicago.org/resource/4ijn-s7e5.json?$select=aka_name,latitude,longitude&results=Fail&facility_type=restaurant&$order=inspection_date%20desc&$limit=150',
 				datatype: 'json',
 				success: matchToFB,
 				statusCode: {
@@ -113,13 +113,17 @@ Template.myMap.created = function() {
 		function placeInstaMarkers(data) {
 			for (var i = 0; i < data.length; i++) {
 				var latLng = L.latLng(data[i].location.latitude+.00003*i*Math.cos(i), data[i].location.longitude-.00003*i*Math.sin(i));
+				if (data[i].caption == null) {
+					data[i].caption = " ";
+					data[i].caption.text = " ";};
 				var popupContent = '<div class="popup">'+ '<a href="http://instagram.com/'+ data[i].user.username +
 					'" target="_blank">' + '<img class="profilePicture" src="'+ data[i].user.profile_picture +'"/>'
 					+ '<div class="popupText user">'+ data[i].user.username + '</div>'+ '</a><br/>' + 
 					'<div class="popupText location"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;' + data[i].location.name + '</div>' + 
 					'<img class="popupPhoto" src="'+ data[i].images.standard_resolution.url 
 					+'"/><br/>'+ '<div class="caption"><i class="fa fa-comment"></i> <div class="user">' + data[i].user.username + '</div> '
-					+ data[i].caption.text + '</div></br><a href="' + data[i].link + '" target="_blank">' 
+					+ data[i].caption.text
+					 + '</div></br><a href="' + data[i].link + '" target="_blank">' 
 					+ '<span class="comment"><i class="fa fa-comment"></i> Comment</span></a></div>';
 				var instaMarker = L.marker([latLng.lat, latLng.lng], {
 					icon: L.mapbox.marker.icon({'marker-color': 'ff0000'})
